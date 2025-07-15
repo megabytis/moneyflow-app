@@ -369,23 +369,25 @@ btnClose.addEventListener("click", function (e) {
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const inputtedAmount = Number(inputLoanAmount.value);
+  setTimeout(function () {
+    const inputtedAmount = Number(inputLoanAmount.value);
 
-  if (
-    inputtedAmount > 0 &&
-    loginAcc.movements.some((move) => move >= inputtedAmount * 0.1)
-  ) {
-    loginAcc.movements.push(inputtedAmount);
-  }
+    if (
+      inputtedAmount > 0 &&
+      loginAcc.movements.some((move) => move >= inputtedAmount * 0.1)
+    ) {
+      loginAcc.movements.push(inputtedAmount);
+    }
 
-  // add taking loan Date
-  loginAcc.movementsDates.push(new Date());
+    // add taking loan Date
+    loginAcc.movementsDates.push(new Date());
 
-  // clearing input field
-  inputLoanAmount.value = "";
+    // clearing input field
+    inputLoanAmount.value = "";
 
-  //  Then again update the UI
-  updateEverything();
+    //  Then again update the UI
+    updateEverything();
+  }, 5000);
 });
 
 // 🔵 SORT button
